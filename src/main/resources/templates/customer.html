@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org">
+<head>
+	<div th:replace="fragments/header :: header-head"/>
+	
+	<style>
+		.cars, .users {
+			margin: 60px 20px;
+			text-align: center;
+			border: 1px solid black;
+			border-radius: 5px;
+			padding: 10px 20px;
+		}
+	</style>
+</head>
+<body>
+	<div th:replace="fragments/header :: header-nav"/>
+	
+	<h1 class="bg-light text-dark py-4 text-center">Car Rental Customer Page</h1>
+	
+	<div class="container text-center">
+		<div class="row justify-content-md-center">
+			<!-- Manager Users -->
+			<div class="col-md-5 users">
+				<h3 class="py-2">Manage Users</h3>
+				<a class="btn btn-block btn-outline-success" th:href="@{/rentCarCustomer}">Rent a Car</a>
+				<a class="btn btn-block btn-outline-success" th:href="@{/amountCars}">Amount of Cars rented by Customer</a>
+			</div>
+		</div>	
+	</div>
+	
+</body>
+</html>

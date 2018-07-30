@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-head" />
+<style>
+table {
+	text-align: center;
+}
+
+.row {
+	background-color: #fafafa;
+}
+</style>
+</head>
+<body>
+	<div th:replace="fragments/header :: header-nav" />
+
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-md-6">
+				<h2 class="text-dark m-0 text-center py-3">Cars Available To
+					Rent</h2>
+			</div>
+			<div class="col-md-6">
+				<div class="p-1 text-center">
+					<a th:href="@{/}" class="btn btn-primary">Home</a>
+				</div>
+			</div>
+		</div>
+		
+		<p th:if="${errorMsg}" th:text="${errorMsg}" class="text-danger py-3 text-center font-weight-bold"></p>
+		
+		<table class="table">
+			<thead class="bg-dark text-light">
+				<tr>
+					<td>id:</td>
+					<td>registration Number:</td>
+					<td>Model:</td>
+					<td>Price Per Day:</td>
+					<td>Year:</td>
+					<td>Rent</td>
+
+				</tr>
+			</thead>
+			<tr th:each="car : ${availabilityList}">
+				<td th:text="${car.id}"></td>
+				<td th:text="${car.registrationNumber}"></td>
+				<td th:text="${car.model}"></td>
+				<td th:text="${car.pricePerDay}"></td>
+				<td th:text="${car.year}"></td>
+				<td><a th:href="'/rentingCar/'+ ${car.registrationNumber}">Rent
+						Car</a></td>
+			</tr>
+		</table>
+	</div>
+	<p style="color: red" th:text="${errMsg}"></p>
+</body>
+</html>

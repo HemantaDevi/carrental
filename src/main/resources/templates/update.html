@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-head" />
+<style>
+	form {
+		width: 35%;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 50px auto;
+		padding: 20px;
+		background-color: #fafafa;
+	}
+	
+	.buttons {
+		text-align: center;
+	}
+	
+	.buttons .btn {
+		margin-top: 10px;
+		width: 49%;
+	}
+</style>
+<body>
+<div th:replace="fragments/header :: header-nav" />
+
+<form th:action="@{/updating}" th:method="post">
+
+<h3 class="text-center py-2">Update Car Details</h3>
+
+<div class="form-group">
+<label>Registration Number</label>
+<input type="text" class="form-control" th:value="${cars.registrationNumber}" name="registrationNumber" readonly/>
+
+<label>Model</label>
+<input type="text" class="form-control" th:value="${cars.model}" name="carModel" readonly/>
+
+<label>Price Per Day</label>
+<input type="number" class="form-control" th:value="${cars.pricePerDay}" name="pricePerDay" required/>
+
+<label>Year</label>
+<input type="number" class="form-control" th:value="${cars.year}" name="year" readonly />
+</div>
+
+<div class="buttons">
+			<button type="submit" class="btn btn-success">Submit</button>
+			<a th:href="@{/}" class="btn btn-danger">Back</a>
+		</div>
+</form>
+</body>
+</html>

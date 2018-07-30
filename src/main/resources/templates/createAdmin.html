@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-head" />
+<style>
+	form {
+		width: 35%;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 50px auto;
+		padding: 20px;
+		background-color: #fafafa;
+	}
+	
+	.buttons {
+		text-align: center;
+	}
+	
+	.buttons .btn {
+		margin-top: 10px;
+		width: 49%;
+	}
+</style>
+<body>
+<div th:replace="fragments/header :: header-nav" />
+<form th:action="@{/creatingAdmin}" th:method="post">
+<h3 class="text-center py-2">Create an Admin</h3>
+
+<p style="color: red" th:text="${error}"></p>
+<div class="form-group">
+<label>National Id:</label>
+<input type="text" class="form-control"  name="nationalId" placeholder="Enter National Id" required/>
+
+<label>Password:</label>
+<input type="password" class="form-control"  name="password" placeholder="Enter Password" required/>
+
+<label>name:</label>
+<input type="text" class="form-control"  name="name" placeholder="Enter Name" required/>
+
+<label>Sex:</label>
+<select name="sex" class="form-control" >
+	<option value="male">Male</option>
+	<option value="female">female</option>
+</select>
+
+<label>Date of birth:</label>
+<input type="date" class="form-control"  name="dateOfBirth" required/>
+</div>
+
+<div class="buttons">
+			<button type="submit" class="btn btn-success">Submit</button>
+			<a th:href="@{/}" class="btn btn-danger">Back</a>
+		</div>
+</form>
+</body>
+</html>

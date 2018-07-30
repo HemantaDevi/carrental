@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-head" />
+<style>
+	form {
+		width: 35%;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 50px auto;
+		padding: 20px;
+		background-color: #fafafa;
+	}
+	
+	.buttons {
+		text-align: center;
+	}
+	
+	.buttons .btn {
+		margin-top: 10px;
+		width: 49%;
+	}
+</style>
+<body>
+<div th:replace="fragments/header :: header-nav" />
+<form th:action="@{/updatingUser}" th:method="post">
+<h3 class="text-center py-2">Update User Details:</h3>
+
+<div class="form-group">
+<label>National Id</label>
+<input type="text" class="form-control" th:value="${user.nationalId}" name="nationalId" readonly/></td>
+
+<label>Name</label>
+<input type="text" class="form-control" th:value="${user.name}" name="name"  required/>
+
+<label>Password</label>
+<input type="password" class="form-control" th:value="${user.password}" name="password" readonly/>
+
+<label>Sex</label>
+<input type="text" class="form-control" th:value="${user.sex}" name="sex" readonly/>
+
+<label>Date Of Birth</label>
+<input type="text" class="form-control" th:value="${user.dateOfBirth}" name="dateOfBirth" readonly/>
+
+<label>Role of User</label>
+<input type="text" class="form-control" th:value="${user.role}" name="role" readonly/>
+</div>
+<div class="buttons">
+			<button type="submit" class="btn btn-success">Submit</button>
+			<a th:href="@{/}" class="btn btn-danger">Back</a>
+		</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head>
+<div th:replace="fragments/header :: header-head" />
+<style>
+	form {
+		width: 35%;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 50px auto;
+		padding: 20px;
+		background-color: #fafafa;
+	}
+	
+	.buttons {
+		text-align: center;
+	}
+	
+	.buttons .btn {
+		margin-top: 10px;
+		width: 49%;
+	}
+</style>
+</head>
+    </head>
+    <body>
+        
+        <form method="post" th:action="@{/login}">
+        <h3 class="text-center py-2">Login Form</h3>
+        	<!-- Error for wrong credentials -->
+        	
+        	<div class="form-group">
+        	<div th:if="${param.error}" style="color:red">
+        		Invalid Username and Password
+        	</div>
+        	
+        	<!-- Logout Handling -->
+        	<div th:if="${param.logout}">
+        		You have been logged out
+        	</div>
+        	<label>Username:</label>
+        	<input type="text" class="form-control"  name="username" placeholder="Enter User National Id" required/>
+        	<label>Password:</label>
+        	<input type="password" class="form-control"  name="password" placeholder="Enter Password" required/>
+        	</div>
+        	<div class="buttons">
+			<button type="submit" class="btn btn-success">Login</button>
+		</div>
+	</form>
+    </body>
+</html> 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org">
+<head>
+<div th:replace="fragments/header :: header-head" />
+<style>
+table {
+	text-align: center;
+}
+
+.row {
+	background-color: #fafafa;
+}
+form {
+		width: 35%;
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 50px auto;
+		padding: 20px;
+		background-color: #fafafa;
+	}
+	
+	.buttons {
+		text-align: center;
+	}
+	
+	.buttons .btn {
+		margin-top: 10px;
+		width: 49%;
+	}
+</style>
+</head>
+<body>
+<div th:replace="fragments/header :: header-nav" />
+
+<form method="POST" enctype="multipart/form-data"
+	th:action="@{|/importCsv|}">
+<h3 class="text-center py-2">Upload Your CSV File:</h3>
+
+<div class="form-group">
+<label>Import cars(CSV): </label>
+<input type="file" class="form-control" name="file" required />
+</div>
+<div class="buttons">
+			<button type="submit" class="btn btn-success">Upload</button>
+			<a th:href="@{/}" class="btn btn-danger">Back</a>
+		</div>
+</form>
+<p style="color:red" th:text="${error}"></p>
+</body>
+</html>
